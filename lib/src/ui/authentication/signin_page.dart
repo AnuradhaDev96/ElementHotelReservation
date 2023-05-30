@@ -8,6 +8,7 @@ import 'package:rh_reader/src/utils/message_utils.dart';
 import '../../config/app_colors.dart';
 import '../widgets/custom_input_field.dart';
 import '../widgets/custom_raised_button.dart';
+import '../widgets/reader_home/reader_home.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({Key? key}) : super(key: key);
@@ -21,9 +22,14 @@ class _SignInPageState extends State<SignInPage> {
   static TextEditingController passwordController = TextEditingController();
 
   @override
+  void dispose() {
+    userNameController.clear();
+    passwordController.clear();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    userNameController.text = "anuradhass@gmail.com";
-    passwordController.text = "admin_z";
 
     var screenSize = MediaQuery.of(context).size;
     return Container(
@@ -36,8 +42,7 @@ class _SignInPageState extends State<SignInPage> {
               color: AppColors.indigoMaroon,
               width: screenSize.width * 0.7,
               child: Padding(
-                  padding:
-                  const EdgeInsets.symmetric(horizontal: 50, vertical: 50),
+                  padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 50),
                   child: Column(
                     children: [
                       Row(
@@ -62,12 +67,18 @@ class _SignInPageState extends State<SignInPage> {
                             width: MediaQuery.of(context).size.width * 0.1,
                             height: MediaQuery.of(context).size.height * 0,
                           ),
-                          const Text(
-                            'Home',
-                            style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 20.0,
-                              decoration: TextDecoration.none,
+                          GestureDetector(
+                            onTap: () => Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(builder: (context) => const ReaderHome())
+                            ),
+                            child: const Text(
+                              'Home',
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 20.0,
+                                decoration: TextDecoration.none,
+                              ),
                             ),
                           ),
                           SizedBox(
@@ -135,8 +146,8 @@ class _SignInPageState extends State<SignInPage> {
                                 width: MediaQuery.of(context).size.width * 0,
                                 height: MediaQuery.of(context).size.height * 0.03,
                               ),
-                              Row(
-                                children: const [
+                              const Row(
+                                children: [
                                   Text(
                                     'Not A member ?',
                                     style: TextStyle(
@@ -237,7 +248,7 @@ class _SignInPageState extends State<SignInPage> {
           await GetIt.I<AuthService>().passwordLogin(userNameController.text, passwordController.text);
       if (passwordLoginResult != null) {
         switch (passwordLoginResult.type) {
-          case "Rider":
+          case "Admin":
             navigateToAdminHomePage();
             break;
           default:

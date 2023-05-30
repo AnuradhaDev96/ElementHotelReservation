@@ -116,7 +116,7 @@ class _AdminSideDrawerState extends State<AdminSideDrawer> {
                       ),
                     ),
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const SignInPage()));
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const SignInPage()));
                     },
                   ),
                 ],

@@ -12,6 +12,7 @@ import 'src/models/change_notifiers/accommodation_search_result_notifier.dart';
 import 'src/models/change_notifiers/credit_card_notifier.dart';
 import 'src/models/change_notifiers/reservation_notifier.dart';
 import 'src/models/change_notifiers/side_drawer_notifier.dart';
+import 'src/ui/authentication/signin_page.dart';
 import 'src/ui/widgets/admin_home/admin_home.dart';
 import 'src/ui/widgets/reader_home/reader_home.dart';
 import 'src/utils/dependency_locator.dart';
@@ -100,8 +101,7 @@ class MyApp extends StatelessWidget {
           // textTheme: TextTheme()
 
         ),
-        // home: const ReaderHome(),
-        home: const AdminHome(),
+        home: const ReaderHome(),
       ),
     );
   }

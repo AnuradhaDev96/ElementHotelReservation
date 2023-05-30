@@ -227,16 +227,16 @@ class _SideDrawerState extends State<SideDrawer> {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => const SignInPage()));
                     },
                   ),
-                  const SizedBox(width: 25.0),
-                  ElevatedButton(
-                    child: const Text(
-                      "Sign Up",
-                      style: TextStyle(
-                          color: AppColors.goldYellow
-                      ),
-                    ),
-                    onPressed: (){},
-                  )
+                  // const SizedBox(width: 25.0),
+                  // ElevatedButton(
+                  //   child: const Text(
+                  //     "Sign Up",
+                  //     style: TextStyle(
+                  //         color: AppColors.goldYellow
+                  //     ),
+                  //   ),
+                  //   onPressed: (){},
+                  // )
                 ],
               ),
             )

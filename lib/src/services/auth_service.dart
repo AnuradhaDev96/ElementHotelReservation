@@ -11,7 +11,7 @@ class AuthService {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
   
   Future<PasswordLoginResult?> passwordLogin(String username, String password) async {
-      final loggedUser = await _firebaseAuthWeb.signInWithEmailAndPassword("anuradhashs@gmail.com", "admin_z");
+      final loggedUser = await _firebaseAuthWeb.signInWithEmailAndPassword(username, password);
       print(loggedUser);
 
       PasswordLoginResult passwordLoginResult = PasswordLoginResult(
